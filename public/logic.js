@@ -12,7 +12,16 @@ $(document).ready(function(){
         // 
         console.log('submitted')
         var inputs = $('#surveyForm :selected')
-        console.log(inputs)
+        var sendData={scores:[]}; 
+        for (var i=0; i<inputs.length; i++ ) {
+            sendData.scores.push (parseInt(inputs[i].text)) 
+        }
+        console.log(sendData); 
+        $.post("/api/survey", sendData, function(data){
+            console.log(data); 
+            
+
+        } ) 
     })
 
 })
